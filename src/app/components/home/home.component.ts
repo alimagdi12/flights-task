@@ -10,8 +10,12 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  // Navigate to /flights
+  // Navigate to /flights and save login status to local storage
   navigateToFlights(): void {
+    // Save login status to local storage
+    localStorage.setItem('login', 'true');
+
+    // Navigate to the flights page
     this.router.navigate(['/flights']);
   }
 }
