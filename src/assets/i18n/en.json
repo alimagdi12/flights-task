@@ -1,0 +1,16 @@
+{
+  "refundable": "Refundable",
+  "Yes": "Yes",
+  "No": "No",
+  "price": "Price",
+  "stops": "Stops",
+  "viewDetails": "View Details",
+  "bookFlight": "Book Flight",
+  "flight": {
+    "departureTime": "Departure Time",
+    "arrivalTime": "Arrival Time",
+    "cabinClass": "Cabin Class",
+    "airlineName": "Airline",
+    "totalDuration": "Total Duration"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "refundable": "قابل للاسترداد",
+  "Yes": "نعم",
+  "No": "لا",
+  "price": "السعر",
+  "stops": "التوقفات",
+  "viewDetails": "عرض التفاصيل",
+  "bookFlight": "احجز الرحلة",
+  "flight": {
+    "departureTime": "وقت المغادرة",
+    "arrivalTime": "وقت الوصول",
+    "cabinClass": "درجة المقصورة",
+    "airlineName": "شركة الطيران",
+    "totalDuration": "المدة الإجمالية"
+  }
+}

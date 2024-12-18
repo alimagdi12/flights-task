@@ -1,0 +1,97 @@
+<!-- Sidebar Toggle Button -->
+<button class="toggle-btn" (click)="toggleSidebar($event)">☰</button>
+
+<!-- Overlay for Sidebar -->
+<div class="overlay" *ngIf="isSidebarOpen" (click)="toggleSidebar($event)"></div>
+
+<!-- Sidebar Container -->
+<div class="sidebar" [class.open]="isSidebarOpen" (click)="stopPropagation($event)">
+  <button class="close-btn" (click)="toggleSidebar($event)">✖</button>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="ex: Nile Air"
+      (input)="onSearch($event)"
+      [value]="searchInput"
+      (focus)="showSuggestions = true"
+    />
+    <ul class="suggestions" *ngIf="showSuggestions && searchSuggestions.length">
+      <li *ngFor="let suggestion of searchSuggestions" (click)="selectSuggestion(suggestion)">
+        {{ suggestion }}
+      </li>
+    </ul>
+  </div>
+
+  <hr mat-divider>
+
+  <!-- Filter Section with Sliders -->
+  <div class="filter-section">
+    <h3>Filter by Price</h3>
+    <mat-slider [min]="minimumPrice" [max]="maximumPrice" (change)="onSliderChange()">
+      <input matSliderStartThumb [(ngModel)]="sliderStartValue">
+      <input matSliderEndThumb [(ngModel)]="sliderEndValue">
+    </mat-slider>
+    <div class="slider-values">
+      <p class="price-min">{{sliderStartValue | currencyConverter}}</p>
+      <p class="price-max">{{sliderEndValue | currencyConverter}}</p>
+    </div>
+  </div>
+
+
+<!-- Stops Filter Section -->
+  <div class="filter-section">
+    <!-- Header with Toggle Arrow -->
+    <div class="filter-header" (click)="toggleStopsSection()">
+      <h3>Stops</h3>
+      <mat-icon>
+        {{ isStopsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+      </mat-icon>
+    </div>
+
+    <!-- Stops Options -->
+    <div *ngIf="isStopsOpen" class="filter-options">
+      <mat-radio-group [(ngModel)]="selectedStop" (change)="onStopChange()">
+        <mat-radio-button [value]="0">Non-Stop</mat-radio-button>
+        <mat-radio-button [value]="1">1 Stop</mat-radio-button>
+        <mat-radio-button [value]="2">2 Stops</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+
+  <div class="filter-section">
+  <!-- Header with Toggle Arrow -->
+  <div class="filter-header" (click)="toggleRefundSection()">
+    <h3>Refundability</h3>
+    <mat-icon>
+      {{ isRefundOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+    </mat-icon>
+  </div>
+
+  <!-- Refund Options -->
+  <div *ngIf="isRefundOpen" class="filter-options">
+    <!-- "All" Option -->
+    <mat-checkbox
+      [checked]="selectAll"
+      (change)="onSelectAllChange($event)">
+      All
+    </mat-checkbox>
+
+    <!-- Refundable Option -->
+    <mat-checkbox
+      [checked]="refundable"
+      [disabled]="selectAll"
+      (change)="onRefundChange($event)">
+      Refundable
+    </mat-checkbox>
+  </div>
+</div>
+
+
+
+
+
+
+</div>

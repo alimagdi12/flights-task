@@ -1,0 +1,24 @@
+<app-search-bar></app-search-bar>
+<div class="language-switcher">
+  <button (click)="switchLanguage()" class="btn btn-primary">
+    {{ currentLanguage === 'en' ? 'العربية' : 'English' }}
+  </button>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- Show message if no flights are available -->
+    <div *ngIf="flights.length === 0" class="col-12 text-center">
+      <div class="alert alert-warning py-5">
+        <h4 class="alert-heading">No Flights Found</h4>
+        <p>We couldn't find any flights matching your search criteria. Try adjusting the filters or search again.</p>
+        <!-- <button class="btn btn-primary mt-3" (click)="resetFilters()">Reset Filters</button> -->
+      </div>
+    </div>
+
+    <!-- Show flights if available -->
+    <div class="col-12 col-md-6 col-lg-12 mb-4" *ngFor="let flight of flights">
+      <app-card [flight]="flight"></app-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container mt-4">
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- Flight Details Section -->
+  <div *ngIf="!isLoading && flightDetails" class="flight-card p-3 shadow-sm rounded-4 bg-white">
+    <!-- Airline Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex align-items-center">
+        <img
+          [src]="flightDetails.allJourney.flights[0]?.flightAirline?.airlineLogo"
+          class="airline-logo me-3 rounded-circle border"
+          width="60" height="60"
+          [alt]="flightDetails.allJourney.flights[0]?.flightAirline?.airlineName"
+        />
+        <div>
+          <h5 class="fw-bold mb-0">
+            {{ flightDetails.allJourney.flights[0]?.flightAirline?.airlineName }} {{ flightDetails.sequenceNum }}
+          </h5>
+          <span class="badge bg-secondary">Refundable: {{ flightDetails.isRefundable }}</span>
+        </div>
+      </div>
+      <span class="badge bg-info text-white">{{ flightDetails.cabinClass }}</span>
+    </div>
+
+    <!-- Flight Details Section -->
+    <div class="d-flex justify-content-around align-items-center flight-details mb-3">
+      <!-- Departure -->
+      <div class="text-center">
+        <h5 class="mb-1">{{ flightDetails.deptDate | date: 'shortTime' }}</h5>
+        <p class="text-muted mb-0">
+          {{ flightDetails.allJourney.flights[0]?.flightDTO[0]?.departureTerminalAirport.cityName }}
+        </p>
+      </div>
+
+      <!-- Plane Icon with Duration -->
+      <div class="text-center position-relative">
+        <i class="bi bi-airplane fs-3 text-primary"></i>
+        <div class="text-muted">{{ flightDetails.totalDuration | timeConverter }}</div>
+      </div>
+
+      <!-- Arrival -->
+      <div class="text-center">
+        <h5 class="mb-1">{{ flightDetails.arrivalDate | date: 'shortTime' }}</h5>
+        <p class="text-muted mb-0">
+          {{ flightDetails.allJourney.flights[0]?.flightDTO[0]?.arrivalTerminalAirport.cityName }}
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Price and Stops -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="fw-bold">
+        Price: {{ flightDetails.itinTotalFare.amount | currencyConverter }}
+      </span>
+      <span>{{ flightDetails.allJourney.flights[0].stopsNum }} Stop (s)</span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-between gap-2">
+      <button
+        mat-raised-button
+        color="accent"
+        class="w-100 shadow-sm"
+        (click)="bookFlight()"
+      >
+        Book Flight
+      </button>
+    </div>
+  </div>
+
+  <!-- No Flight Found -->
+  <div *ngIf="!isLoading && !flightDetails" class="alert alert-danger text-center mt-4">
+    <p>No flight found for the provided ID.</p>
+  </div>
+
+  <!-- Success Notification -->
+  <div *ngIf="showSuccess" class="success-popup shadow-lg">
+    <div class="d-flex align-items-center justify-content-between">
+      <i class="bi bi-check-circle-fill text-success me-2 fs-4"></i>
+      <span class="fw-bold">Flight booked successfully !</span>
+      <button class="btn-close" (click)="showSuccess = false"></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div
+  class="card flight-card p-4 shadow-sm rounded-4"
+  [ngClass]="{ 'rtl': currentLanguage === 'ar', 'ltr': currentLanguage === 'en' }"
+>
+  <!-- Airline Header -->
+  <div class="airline-header d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex align-items-center">
+      <img
+        [src]="flight.allJourney.flights[0]?.flightAirline?.airlineLogo"
+        class="airline-logo me-3 rounded-circle border"
+        [alt]="flight.allJourney.flights[0]?.flightAirline?.airlineName"
+      />
+      <span class="fw-bold airline-name">{{ flight.allJourney.flights[0]?.flightAirline?.airlineName }}</span>
+    </div>
+    <span class="badge bg-gradient">
+      {{ 'flight.cabinClass' | translate }}: {{ flight.cabinClass }}
+    </span>
+  <h6 class="refund">{{ 'refundable' | translate }}: {{ flight.isRefundable ? ('Yes' | translate) : ('No' | translate) }}</h6>
+  </div>
+
+  <!-- Flight Details -->
+  <div class="d-flex justify-content-around align-items-center flight-details mb-3">
+    <!-- Departure -->
+    <div class="text-center">
+      <h5 class="mb-1 time">{{ flight.deptDate | date: 'shortTime' }}</h5>
+      <small class="city">{{ flight.allJourney.flights[0]?.flightDTO[0]?.departureTerminalAirport.cityName }}</small>
+    </div>
+
+    <!-- Flight Duration -->
+    <div class="text-center position-relative flight-animation">
+      <i class="bi bi-airplane fs-3 text-primary"></i>
+      <span class="flight-duration text-muted">
+        {{ 'flight.totalDuration' | translate }}: {{ flight.totalDuration | timeConverter }}
+      </span>
+    </div>
+
+    <!-- Arrival -->
+    <div class="text-center">
+      <h5 class="mb-1 time">{{ flight.arrivalDate | date: 'shortTime' }}</h5>
+      <small class="city">{{ flight.allJourney.flights[0]?.flightDTO[0]?.arrivalTerminalAirport.cityName }}</small>
+    </div>
+  </div>
+
+  <hr class="my-3" />
+
+  <!-- Price and Stops -->
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="fw-bold price">
+      {{ 'price' | translate }}: {{ flight.itinTotalFare.amount | currencyConverter }}
+    </span>
+    <span>
+      {{ flight.allJourney.flights[0].stopsNum }} {{ 'stops' | translate }}
+    </span>
+  </div>
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <button class="btn btn-primary shadow-sm w-100" (click)="navigateToDetails(flight.sequenceNum)">
+      {{ 'viewDetails' | translate }}
+    </button>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <button class="btn btn-primary shadow-sm w-100" (click)="navigateToBooking(flight.sequenceNum)">
+      {{ 'bookFlight' | translate }}
+    </button>
+  </div>
+</div>
