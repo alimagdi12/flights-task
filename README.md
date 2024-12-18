@@ -1,59 +1,101 @@
-# Task
+# Flight Booking Angular Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+This is an Angular-based flight booking application that allows users to search for flights, view detailed information, and book flights. It incorporates features such as multi-language support, dynamic flight filtering, and real-time flight data from a service.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Search Flights**: Users can search flights based on airlines, departure/arrival cities, and other criteria.
+- **Flight Details**: Detailed flight information including departure/arrival cities, baggage info, price, and taxes.
+- **Booking**: Users can book flights, with a success popup shown after booking.
+- **Multi-language Support**: Switch between English and Arabic (or other languages as configured).
+- **Flight Filtering**: Users can filter flights based on price, number of stops, and refundability.
+- **Loading States**: Visual feedback is provided while data is being loaded.
+- **Sidebar**: A sidebar with a search bar and filters is available for an enhanced user experience.
 
-```bash
-ng serve
-```
+## Components
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### `FlightBookingComponent`
+- Displays the details of a selected flight.
+- Handles flight booking and shows a success popup.
+- Uses `ActivatedRoute` to retrieve the flight ID from the URL.
 
-## Code scaffolding
+### `CardComponent`
+- Displays individual flight information.
+- Provides buttons to navigate to detailed flight views and booking.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### `FlightsComponent`
+- Displays a list of available flights fetched from the service.
+- Supports language switching and shows available flights.
 
-```bash
-ng generate component component-name
-```
+### `FlightsDetailsComponent`
+- Displays detailed flight information for a specific flight based on the flight ID.
+- Handles loading states while fetching data.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### `SearchBarComponent`
+- Provides a search bar for filtering flights.
+- Includes sidebar functionality and handles search input, price filtering, and refundability filters.
 
-```bash
-ng generate --help
-```
+## Installation
 
-## Building
+To get started with the project, follow these steps:
 
-To build the project run:
+1. Clone the repository:
 
-```bash
-ng build
-```
+    ```bash
+    git clone https://github.com/your-repo/flight-booking-angular.git
+    ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+2. Install dependencies:
 
-## Running unit tests
+    ```bash
+    npm install
+    ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+3. Run the application:
 
-```bash
-ng test
-```
+    ```bash
+    ng serve
+    ```
 
-## Running end-to-end tests
+4. Open your browser and navigate to `http://localhost:4200` to view the application.
 
-For end-to-end (e2e) testing, run:
+## Services
 
-```bash
-ng e2e
-```
+### `FlightsService`
+- A service that provides flight data and handles API calls.
+- Manages filters and flight suggestions.
+- Subscribes to changes in the flight data and reflects updates in the UI.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### `TranslateService`
+- Used to manage translations for multi-language support.
 
-## Additional Resources
+## Dependencies
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `@angular/core`: Core Angular library.
+- `@angular/router`: For routing and navigation.
+- `@ngx-translate/core`: For multi-language support.
+- `rxjs`: For reactive programming with observables.
+- `mat-slider`: Material slider for price range filtering.
+- `mat-radio-button`, `mat-checkbox`, `mat-icon`: Material components for UI elements.
+- `ngx-currency`: Custom pipe for currency formatting.
+
+## Usage
+
+1. **Search Flights**: Enter the airline name or city in the search bar and view filtered flight options.
+2. **View Details**: Click on a flight card to see detailed information like departure/arrival times, baggage information, price breakdown, and taxes.
+3. **Book Flight**: Click the "Book Flight" button on a flight card to book your flight. A success message will appear for 5 seconds after booking.
+4. **Apply Filters**: Use the sidebar to filter flights by price range, number of stops, and refundability.
+
+## Contributing
+
+Feel free to fork this repository and make improvements. To contribute, please:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and push them to your fork.
+4. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
