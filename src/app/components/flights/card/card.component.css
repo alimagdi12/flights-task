@@ -1,142 +1,119 @@
-/* General container styling */
-.container {
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 1rem;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.loader-container {
-  text-align: center;
-  margin-top: 50px;
-  .loading-text {
-    margin-top: 10px;
-    font-size: 1.2rem;
-  }
-}
-
-/* Title Styling */
-.title {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #3f51b5;
-  margin-bottom: 2rem;
-}
-
 /* Card Styling */
-.mat-card {
-  margin: 20px 0;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+.flight-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.flight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.animated-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.airline-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  background-color: #fff;
 }
 
-.summary-card {
-  background-color: #e8f5e9;
+.airline-details .flight-number {
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.passenger-card {
-  background-color: #f3e5f5;
+.time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3f51b5;
 }
 
-.tax-card {
-  background-color: #e3f2fd;
+.city {
+  font-size: 0.9rem;
+  color: #666;
 }
 
-/* Flight Summary Styling */
-.flight-summary {
+.flight-animation .flight-path {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+}
+.flight-animation .dot {
+  width: 10px;
+  height: 10px;
+  background: #3f51b5;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+.flight-animation .line {
+  flex-grow: 1;
+  height: 2px;
+  background: #3f51b5;
 }
 
-.info-item {
-  flex: 1 1 calc(50% - 20px);
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.flight-duration {
+  font-size: 0.85rem;
+  margin-top: 5px;
 }
 
-/* Passenger Grid */
-.passenger-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+.price {
+  font-size: 1.2rem;
+  color: #d32f2f;
 }
 
-/* Table Styling */
-.tax-table {
-  width: 100%;
-  border-collapse: collapse;
+.stops {
+  font-size: 0.9rem;
+  background: #e0f7fa;
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #00695c;
+}
 
-  th {
-    background-color: #3f51b5;
-    color: white;
+.refund {
+  font-size: 0.9rem;
+  color: #4caf50;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.buttons button {
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 25px;
+}
+
+@media only screen and (max-width: 768px) {
+  .flight-card {
+    padding: 1rem;
   }
 
-  td {
-    padding: 12px;
+  .airline-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .time {
+    font-size: 1.1rem;
+  }
+
+  .buttons button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .flight-details {
+    flex-direction: row;
     text-align: center;
   }
-}
 
-.airline-logo{
-  max-width: 80px;
-}
-.no-data {
-  text-align: center;
-  color: #d32f2f;
-
-  mat-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+  .time, .city {
+    margin-bottom: 0.5rem;
   }
-}
 
-
-/* Default layout (LTR) */
-.ltr {
-  direction: ltr;
-  text-align: left;
-}
-
-/* Arabic layout (RTL) */
-.rtl {
-  direction: rtl;
-  text-align: right;
-}
-
-.rtl .me-3 {
-  margin-left: 1rem !important;
-  margin-right: 0 !important;
-}
-
-.rtl .fw-bold {
-  text-align: right;
-}
-
-.rtl .d-flex {
-  flex-direction: row-reverse;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  .price {
+    font-size: 1rem;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-
-@media only screen and (max-width: 600px) {
-  .refund{
-    margin-left: -25px;
-  }
 }

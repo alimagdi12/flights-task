@@ -15,6 +15,7 @@
       placeholder="ex: Nile Air"
       (input)="onSearch($event)"
       [value]="searchInput"
+      appAllowEnglishOnly
       (focus)="showSuggestions = true"
     />
     <ul class="suggestions" *ngIf="showSuggestions && searchSuggestions.length">
@@ -28,7 +29,7 @@
 
   <!-- Filter Section with Sliders -->
   <div class="filter-section">
-    <h3>Filter by Price</h3>
+    <h3>{{ 'sidebar.filterByPrice' | translate }}</h3>
     <mat-slider [min]="minimumPrice" [max]="maximumPrice" (change)="onSliderChange()">
       <input matSliderStartThumb [(ngModel)]="sliderStartValue">
       <input matSliderEndThumb [(ngModel)]="sliderEndValue">
@@ -44,7 +45,7 @@
   <div class="filter-section">
     <!-- Header with Toggle Arrow -->
     <div class="filter-header" (click)="toggleStopsSection()">
-      <h3>Stops</h3>
+      <h3>{{ 'sidebar.stops' | translate }}</h3>
       <mat-icon>
         {{ isStopsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
       </mat-icon>
@@ -53,9 +54,9 @@
     <!-- Stops Options -->
     <div *ngIf="isStopsOpen" class="filter-options">
       <mat-radio-group [(ngModel)]="selectedStop" (change)="onStopChange()">
-        <mat-radio-button [value]="0">Non-Stop</mat-radio-button>
-        <mat-radio-button [value]="1">1 Stop</mat-radio-button>
-        <mat-radio-button [value]="2">2 Stops</mat-radio-button>
+        <mat-radio-button [value]="0">{{ 'sidebar.nonStop' | translate }}</mat-radio-button>
+        <mat-radio-button [value]="1">{{ 'sidebar.oneStop' | translate }}</mat-radio-button>
+        <mat-radio-button [value]="2">{{ 'sidebar.twoStops' | translate }}</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>
@@ -64,7 +65,7 @@
   <div class="filter-section">
   <!-- Header with Toggle Arrow -->
   <div class="filter-header" (click)="toggleRefundSection()">
-    <h3>Refundability</h3>
+    <h3>{{ 'sidebar.refundability' | translate }}</h3>
     <mat-icon>
       {{ isRefundOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
     </mat-icon>
@@ -76,7 +77,7 @@
     <mat-checkbox
       [checked]="selectAll"
       (change)="onSelectAllChange($event)">
-      All
+      {{ 'sidebar.All' | translate }}
     </mat-checkbox>
 
     <!-- Refundable Option -->
@@ -84,7 +85,7 @@
       [checked]="refundable"
       [disabled]="selectAll"
       (change)="onRefundChange($event)">
-      Refundable
+      {{ 'sidebar.refundability' | translate }}
     </mat-checkbox>
   </div>
 </div>

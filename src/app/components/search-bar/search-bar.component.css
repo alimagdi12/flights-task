@@ -33,18 +33,20 @@
   font-size: 20px;
   cursor: pointer;
 }
-
 .toggle-btn {
-  margin: 20px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+      position: sticky;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
 
 .search-container {
   margin-bottom: 20px;
@@ -103,6 +105,31 @@ input[type="range"]::-webkit-slider-thumb {
 
 .mat-slider {
   width: 100%;
+}
+
+.mat-slider {
+  width: 100%;
+}
+
+/* Style for the mat-slider thumb */
+.mat-slider-thumb {
+  width: 24px; /* Adjust the size */
+  height: 24px; /* Adjust the size */
+  background-color: #4CAF50; /* Change color if necessary */
+  border-radius: 50%;
+  margin-top: -8px; /* Move thumb up/down if necessary */
+}
+
+/* For the active range (track) */
+.mat-slider-track {
+  height: 8px;
+  background-color: #007bff; /* Adjust color */
+  border-radius: 4px;
+}
+
+/* For the fill part of the slider */
+.mat-slider-fill {
+  background-color: #007bff; /* Adjust color */
 }
 
 /* Style for the range slider */

@@ -12,5 +12,16 @@
     "cabinClass": "Cabin Class",
     "airlineName": "Airline",
     "totalDuration": "Total Duration"
+  },
+  "sidebar": {
+    "toggle": "☰",
+    "close": "✖",
+    "filterByPrice": "Filter by Price",
+    "stops": "Stops",
+    "refundability": "Refundability",
+    "nonStop": "Non-Stop",
+    "oneStop": "1 Stop",
+    "twoStops": "2 Stops",
+    "All": "All"
   }
 }

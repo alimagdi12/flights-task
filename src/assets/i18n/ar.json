@@ -12,5 +12,16 @@
     "cabinClass": "درجة المقصورة",
     "airlineName": "شركة الطيران",
     "totalDuration": "المدة الإجمالية"
+  },
+  "sidebar": {
+    "toggle": "☰",
+    "close": "✖",
+    "filterByPrice": "التصفية حسب السعر",
+    "stops": "التوقفات",
+    "refundability": "قابل للاسترداد",
+    "nonStop": "دون توقف",
+    "oneStop": "1 توقف",
+    "twoStops": "توقفين",
+    "All":"الحميع"
   }
 }

@@ -32,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './components/flights/card/card.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlightBookingComponent } from './components/flight-booking/flight-booking.component';
+import { AllowEnglishOnlyDirective } from './directives/allow-english-only.directive';
+import { HighlightRefundableDirective } from './directives/highlight-refundable.directive';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -48,6 +50,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     CardComponent,
     HomeComponent,
     FlightBookingComponent,
+    AllowEnglishOnlyDirective,
+    HighlightRefundableDirective,
   ],
   imports: [
     BrowserModule,
